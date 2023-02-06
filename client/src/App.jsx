@@ -1,7 +1,9 @@
+import GifApp from "./GifApp";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hola Mundo!</h1>
+      <GifApp />
     </div>
   );
 }
