@@ -1,9 +1,11 @@
-import GifApp from "./GifApp";
+import { NavBar } from "./components";
+import { DashboardGifs } from "./pages/DashboardGifs";
 
 function App() {
   return (
     <div className="App">
-      <GifApp />
+      <NavBar />
+      <DashboardGifs />
     </div>
   );
 }

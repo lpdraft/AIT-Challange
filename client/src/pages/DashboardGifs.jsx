@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { GifsList } from "./components/GifsList";
-import { InputAddSearchGifs } from "./components/InputAddSearchGifs";
+import { InputAddSearchGifs, GifsList } from "../components";
 
-const GifApp = () => {
+export const DashboardGifs = () => {
   const [categories, setCategories] = useState(["Demon Slayer"]);
 
   const onAddCategory = (onNewEvtGifs) => {
@@ -21,5 +20,3 @@ const GifApp = () => {
     </>
   );
 };
-
-export default GifApp;
