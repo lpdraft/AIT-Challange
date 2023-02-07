@@ -49,16 +49,18 @@ export const Register = () => {
           />
         </div>
 
-        <div className="form-group">
-          <button type="submit" className="btn btn-secondary mt-2 p-2">
+        <div className="form-group d-flex justify-content-center">
+          <button type="submit" className="btn btn-secondary mt-3 p-3">
             Register
           </button>
         </div>
       </form>
 
-      <Link to="auth/login">
-        Have account? Click here to <b>Login</b>
-      </Link>
+      <div className="d-flex justify-content-center">
+        <Link to="auth/login">
+          Have account? Click here to <b>Login</b>
+        </Link>
+      </div>
     </div>
   );
 };

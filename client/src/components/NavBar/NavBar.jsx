@@ -1,5 +1,5 @@
 import logo from "../../assets/imgs/peace.png";
-import navBarcss from "./navbar.css";
+import navBarCss from "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar = () => {

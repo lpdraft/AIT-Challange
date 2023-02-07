@@ -40,16 +40,18 @@ export const Login = () => {
           />
         </div>
 
-        <div className="form-group">
-          <button type="submit" className="btn btn-secondary mt-2 p-2">
+        <div className="form-group  d-flex justify-content-center">
+          <button type="submit" className="btn btn-secondary mt-3 p-3">
             LogIn
           </button>
         </div>
       </form>
 
-      <Link to="auth/register">
-        No Account? Click here to get<b>Registered</b>
-      </Link>
+      <div className="d-flex justify-content-center">
+        <Link to="auth/register">
+          No Account? Click here to get<b>Registered</b>
+        </Link>
+      </div>
     </div>
   );
 };
