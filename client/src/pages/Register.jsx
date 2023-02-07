@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
 export const Register = () => {
   const [user, setUser] = useState({
     name: "",
@@ -8,10 +12,27 @@ export const Register = () => {
     password: "",
   });
 
-  const registerNewUser = (e) => {
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const registerNewUser = async (e) => {
     e.preventDefault();
 
-    console.log(user);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/register",
+        user
+      );
+
+      if (response.data.success) {
+        toast.success("User registered successully!");
+        navigate("/login");
+      } else {
+        toast.error("User already exists!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong!");
+    }
   };
   return (
     <div className="container mt-5">
@@ -57,7 +78,7 @@ export const Register = () => {
       </form>
 
       <div className="d-flex justify-content-center">
-        <Link to="auth/login">
+        <Link to="/login">
           Have account? Click here to <b>Login</b>
         </Link>
       </div>

@@ -1,18 +1,32 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 export const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
-  const logInUser = (e) => {
+  const logInUser = async (e) => {
     e.preventDefault();
-
-    console.log(user);
-    toast.success("Logged In successfully!");
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/login",
+        user
+      );
+      if (response.data.success) {
+        localStorage.setItem("token", response.data.data);
+        toast.success("Logged In successfully!");
+        navigate("/");
+      } else {
+        toast.error("Your password or email is wrong!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
   return (
     <div className="container mt-5">
@@ -48,8 +62,8 @@ export const Login = () => {
       </form>
 
       <div className="d-flex justify-content-center">
-        <Link to="auth/register">
-          No Account? Click here to get<b>Registered</b>
+        <Link to="/register">
+          No Account? Click here to get <b>Registered</b>
         </Link>
       </div>
     </div>

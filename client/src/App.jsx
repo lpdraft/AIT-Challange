@@ -1,16 +1,41 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DashboardGifs, Register, Login } from "./pages";
-import { NavBar } from "./components";
+import { Home, Register, Login } from "./pages";
+import { Toaster } from "react-hot-toast";
+
+// import { NavBar } from "./components";
+import { PublicRoute, PrivateRoute } from "./routes";
 
 function App() {
+  // const {loading}
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={false} />
       <BrowserRouter>
-        <NavBar />
         <Routes>
-          <Route path="/" element={<DashboardGifs />} />
-          <Route path="/auth/register" element={<Register />} />
-          <Route path="/auth/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
