@@ -18,12 +18,14 @@ export const InputAddSearchGifs = ({ onSearchedGif }) => {
   return (
     <div>
       <form onSubmit={onFormSubmit}>
-        <input
-          type="text"
-          // value={searchedValue}
-          onChange={onInputChange}
-          placeholder="Search your fav gifs..."
-        />
+        <div className="form-group mt-5">
+          <input
+            className="form-control"
+            type="text"
+            onChange={onInputChange}
+            placeholder="Search your fav gifs..."
+          />
+        </div>
       </form>
     </div>
   );

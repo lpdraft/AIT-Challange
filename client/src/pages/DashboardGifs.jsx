@@ -2,7 +2,7 @@ import { useState } from "react";
 import { InputAddSearchGifs, GifsList } from "../components";
 
 export const DashboardGifs = () => {
-  const [categories, setCategories] = useState(["Demon Slayer"]);
+  const [categories, setCategories] = useState([""]);
 
   const onAddCategory = (onNewEvtGifs) => {
     // setCategories(["Naruto", ...categories]);

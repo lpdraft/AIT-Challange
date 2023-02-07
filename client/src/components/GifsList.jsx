@@ -16,7 +16,7 @@ export const GifsList = ({ category }) => {
   return (
     <>
       {/* category = searchKey */}
-      <h1>{category}</h1>
+      <h1 className="mt-5 text-center">{category}</h1>
       {isLoading && <Spinner />}
       <div className="card-grid">
         {gifs.map((singleGif) => {

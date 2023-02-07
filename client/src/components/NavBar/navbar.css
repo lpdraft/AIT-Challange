@@ -1,0 +1,33 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navLogo {
+  width: 8rem;
+  padding: 0.5rem;
+}
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  list-style: none;
+}
+.navLinks a {
+  cursor: pointer;
+  padding: 0.3rem;
+  margin: 0.5rem;
+  color: #000;
+}
+.navLinks a:hover {
+  font-weight: bold;
+}
+.actionBtns {
+  padding: 0.5rem;
+}
+.actionBtns button {
+  padding: 0.5rem;
+  margin: 0 0.2rem;
+  font-size: 2rem;
+}
