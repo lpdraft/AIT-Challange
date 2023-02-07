@@ -1,6 +1,6 @@
+const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const User = require("../models/userModel");
 
 const registerUserControl = async (req, res) => {
   try {
@@ -51,14 +51,18 @@ const loginUserControl = async (req, res) => {
 
     // Compare pass
     const passwordsMatched = await bcrypt.compareSync(
+      // normal pass
       req.body.password,
+      // encripted pass
       user.password
     );
 
+    // Only create token when pass matched
     if (passwordsMatched) {
+      // First arg: what you whant to store
       // We need secret  key to encript the token
       const token = jwt.sign({ userId: user._id }, process.env.SCERET_KEY, {
-        expiresIn: "3d",
+        expiresIn: "5d",
       });
 
       return res.status(200).send({
@@ -77,7 +81,7 @@ const loginUserControl = async (req, res) => {
   }
 };
 
-const profileUserControl = async (req, res) => {
+const profileUserControl = async (req, res, next) => {
   try {
     const user = await User.findById(req.body.userId);
     // While loggin or registering our users pass is still undefined since we need token
