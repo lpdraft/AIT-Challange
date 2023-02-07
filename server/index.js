@@ -1,8 +1,17 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 require("dotenv").config();
 const connectDB = require("./config/dbConfig");
+
+app.use(express.json());
+app.use(cors());
+
+// Enpoints
+const userRouter = require("./routes/userRoute");
+
+app.use("/api/users", userRouter);
 
 const port = process.env.PORT || 5000;
 
