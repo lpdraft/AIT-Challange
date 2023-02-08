@@ -1,29 +1,38 @@
 const mongoose = require("mongoose");
 // const validator = require("validator");
 const userSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: [true, "Please provide your name"],
   },
-
-  email: {
+  description: {
     type: String,
     required: [true, "Please provide your email"],
-    unique: true,
   },
 
-  password: {
-    type: String,
-    required: [true, "Please add a secure password"],
-  },
-
-  isAdmin: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-
-  avatar: {
+  userlist: [
+    {
+      title: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+        required: false,
+      },
+      video: {
+        public_id: {
+          type: String,
+          required: false,
+        },
+        url: {
+          type: String,
+          required: false,
+        },
+      },
+    },
+  ],
+  poster: {
     public_id: {
       type: String,
       required: false,
@@ -33,16 +42,6 @@ const userSchema = new mongoose.Schema({
       required: false,
     },
   },
-
-  userlist: [
-    {
-      gifs: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userList",
-      },
-      poster: String,
-    },
-  ],
 });
 
 module.exports = mongoose.model("User", userSchema);
