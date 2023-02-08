@@ -1,29 +1,23 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const getDataUri = require("../utils/dataUri");
-const cloudinary = require("cloudinary");
+// const { cloudinary } = require("../cloudinary");
 
 const registerUserControl = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const file = req.file;
-
     // Empty fields
     if (!name || !email || !password) {
       res.status(400);
       throw new Error("Please provide all fields");
     }
-
     // Hash password
     const salt = await bcrypt.genSaltSync(10);
     const hashedPassword = await bcrypt.hashSync(password, salt);
     req.body.password = hashedPassword;
-
     // Cloudinary
-    const fileUri = getDataUri(file);
+    // const fileUri = getDataUri(file);
     const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
-
     const newUser = new User({
       name,
       email,
@@ -33,17 +27,14 @@ const registerUserControl = async (req, res) => {
         url: myCloud.secure_url,
       },
     });
-
     // Before registering.. Check if the user exists
     const userExists = await User.findOne({ email });
-
     if (userExists) {
       return res
         .status(200)
         .send({ msg: "User already exists!", success: false });
     } else {
       await newUser.save();
-
       return res.status(200).send({
         msg: "User registered successfully",
         success: true,
@@ -146,23 +137,21 @@ const updateUserControl = async (req, res) => {
 };
 
 const updateProfilePic = async (req, res) => {
-  try {
-    // Cloudinary
-    const file = req.file;
-    const fileUri = getDataUri(file);
-
-    const user = await User.findById(req.user._id);
-    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
-
-    await cloudinary.v2.uploader.destroy(user.avatar.public_id);
-    user.avatar = {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
-    };
-    await user.save();
-  } catch (error) {
-    res.status(500).send({ success: false, msg: error.msg });
-  }
+  // try {
+  //   // Cloudinary
+  //   const file = req.file;
+  //   const fileUri = getDataUri(file);
+  //   const user = await User.findById(req.user._id);
+  //   const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
+  //   await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+  //   user.avatar = {
+  //     public_id: myCloud.public_id,
+  //     url: myCloud.secure_url,
+  //   };
+  //   await user.save();
+  // } catch (error) {
+  //   res.status(500).send({ success: false, msg: error.msg });
+  // }
 };
 const getAllUsers = async (req, res) => {
   try {
@@ -183,6 +172,5 @@ module.exports = {
   userVerificationControl,
   getSingleUserControl,
   updateUserControl,
-  updateProfilePic,
   getAllUsers,
 };

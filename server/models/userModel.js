@@ -17,6 +17,11 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please add a secure password"],
   },
 
+  hobbies: {
+    type: String,
+    required: false,
+  },
+
   isAdmin: {
     type: Boolean,
     required: false,
@@ -24,25 +29,9 @@ const userSchema = new mongoose.Schema({
   },
 
   avatar: {
-    public_id: {
-      type: String,
-      required: false,
-    },
-    url: {
-      type: String,
-      required: false,
-    },
+    type: String,
+    required: false,
   },
-
-  userlist: [
-    {
-      gifs: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userList",
-      },
-      poster: String,
-    },
-  ],
 });
 
 module.exports = mongoose.model("User", userSchema);
