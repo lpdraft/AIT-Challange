@@ -15,9 +15,7 @@ export const DefaultLayout = ({ children }) => {
             src={logo}
             alt="logo"
             className="navLogo"
-            onClick={() => {
-              navigate("/");
-            }}
+            onClick={() => navigate("/")}
           />
 
           <span>{user?.name.toUpperCase()}</span>
@@ -36,25 +34,58 @@ export const DefaultLayout = ({ children }) => {
           <li>
             <a>Artists</a>
           </li>
-          <li>
-            <a>Stickers</a>
-          </li>
         </div>
         {/* Upload & LoIn/Out */}
         <div className="actionBtns">
-          <button className="btn btn-sm btn-info">
+          <button className="btn btn-sm btn-success">
             <i>Upload</i>
           </button>
 
-          <button
-            className="btn btn-sm btn-danger"
-            onClick={() => {
-              localStorage.removeItem("token");
-              window.location.reload();
-            }}
-          >
-            LogOut
-          </button>
+          <div className="dropdown">
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenu2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Profile
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li>
+                <button
+                  onClick={() => navigate("/profile")}
+                  className="dropdown-item"
+                  type="button"
+                >
+                  MyProfile
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => navigate(`/edit-profile/${user._id}`)}
+                  className="dropdown-item"
+                  type="button"
+                >
+                  Edit
+                </button>
+              </li>
+              <li>
+                <button
+                  className="dropdown-item"
+                  type="button"
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    window.location.reload();
+                  }}
+                >
+                  LogOut
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* ----------------- */}
         </div>
       </div>
       <div className="container">{children}</div>

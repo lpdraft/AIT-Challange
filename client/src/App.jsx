@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Register, Login } from "./pages";
-import { Toaster } from "react-hot-toast";
+import { Home, Register, Login, Profile } from "./pages";
+import { EditProfile } from "./components";
 
-// import { NavBar } from "./components";
 import { PublicRoute, PrivateRoute } from "./routes";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // const {loading}
@@ -20,6 +20,25 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/edit-profile/:userId"
+            element={
+              <PrivateRoute>
+                <EditProfile />
+              </PrivateRoute>
+            }
+          />
+
           <Route
             path="/register"
             element={
@@ -28,6 +47,7 @@ function App() {
               </PublicRoute>
             }
           />
+
           <Route
             path="/login"
             element={
