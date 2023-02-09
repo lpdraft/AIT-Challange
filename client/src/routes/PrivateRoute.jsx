@@ -18,7 +18,7 @@ export const PrivateRoute = ({ children }) => {
   const getUserData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/me",
+        "http://localhost:5000/api/users/user-data",
         {},
         {
           headers: {

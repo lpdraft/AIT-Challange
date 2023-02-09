@@ -63,7 +63,9 @@ export const Login = () => {
 
       <div className="d-flex justify-content-center">
         <Link to="/register">
-          No Account? Click here to get <b>Registered</b>
+          <h5>
+            No Account? Click here to get <b>Registered</b>
+          </h5>
         </Link>
       </div>
     </div>

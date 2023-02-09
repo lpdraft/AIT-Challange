@@ -6,6 +6,7 @@
 .navLogo {
   width: 8rem;
   padding: 0.5rem;
+  cursor: pointer;
 }
 .navLinks {
   display: flex;

@@ -20,15 +20,18 @@ export const DefaultLayout = ({ children }) => {
             }}
           />
 
-          <span>{user?.name.toUpperCase()}</span>
+          <span className="text-success">{user?.name.toUpperCase()}</span>
         </div>
         {/* Nav Links */}
         <div className="navLinks">
           <li>
-            <a>Trending</a>
-          </li>
-          <li>
-            <a>Entertainment</a>
+            <a
+              onClick={() => {
+                navigate("/trend");
+              }}
+            >
+              Trending
+            </a>
           </li>
           <li>
             <a>Sports</a>

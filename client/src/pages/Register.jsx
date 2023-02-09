@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
 export const Register = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
+    hobbies: "",
     password: "",
   });
 
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const registerNewUser = async (e) => {
@@ -47,9 +46,10 @@ export const Register = () => {
             name="name"
             value={user.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Provide your name"
+            placeholder="Provide your name.."
           />
         </div>
+
         <div className="form-group">
           <input
             className="form-control"
@@ -57,9 +57,21 @@ export const Register = () => {
             name="email"
             value={user.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
-            placeholder="Provide email"
+            placeholder="Provide email.."
           />
         </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="hobbies"
+            value={user.hobbies}
+            onChange={(e) => setUser({ ...user, hobbies: e.target.value })}
+            placeholder="Any hobbie?"
+          />
+        </div>
+
         <div className="form-group">
           <input
             className="form-control"
@@ -79,7 +91,9 @@ export const Register = () => {
 
       <div className="d-flex justify-content-center">
         <Link to="/login">
-          Have account? Click here to <b>Login</b>
+          <h5>
+            Have account? Click here to <b>Login</b>
+          </h5>
         </Link>
       </div>
     </div>

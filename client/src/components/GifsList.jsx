@@ -3,15 +3,6 @@ import { GifItem, Spinner } from "../components";
 import { useFetchData } from "../hooks/useFetchData";
 
 export const GifsList = ({ category }) => {
-  // const [randomGifs, setRandomGifs] = useState([]);
-  // const getGifs = async () => {
-  //   const newGifs = await getGifData(category);
-  //   setRandomGifs(newGifs);
-  // };
-  // useEffect(() => {
-  //   getGifs();
-  // }, []);
-
   const { isLoading, gifs } = useFetchData(category);
   return (
     <>

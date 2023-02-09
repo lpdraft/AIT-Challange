@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Register, Login } from "./pages";
+import { Home, Register, Login, TrendingGifs } from "./pages";
 import { Toaster } from "react-hot-toast";
 
 // import { NavBar } from "./components";
@@ -26,6 +26,15 @@ function App() {
               <PublicRoute>
                 <Register />
               </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/trend"
+            element={
+              <PrivateRoute>
+                <TrendingGifs />
+              </PrivateRoute>
             }
           />
           <Route
