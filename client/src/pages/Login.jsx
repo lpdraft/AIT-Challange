@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+
 import axios from "axios";
 
 export const Login = () => {
@@ -38,7 +39,6 @@ export const Login = () => {
           <input
             className="form-control"
             type="email"
-            name="email"
             value={user.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             placeholder="Your email..."
@@ -62,19 +62,11 @@ export const Login = () => {
       </form>
 
       <div className="d-flex justify-content-center">
-<<<<<<< HEAD
         <Link to="/register">
           <h5>
             No Account? Click here to get <b>Registered</b>
           </h5>
         </Link>
-=======
-        <h3>
-          <Link to="/register">
-            No Account? Click here to get <b>Registered</b>
-          </Link>
-        </h3>
->>>>>>> testing
       </div>
     </div>
   );

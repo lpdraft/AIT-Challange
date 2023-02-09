@@ -1,17 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
-import { Home, Register, Login, TrendingGifs } from "./pages";
-import { Toaster } from "react-hot-toast";
-=======
-import { Home, Register, Login, Profile } from "./pages";
+import { Home, Register, Login, TrendingGifs, Profile } from "./pages";
 import { EditProfile } from "./components";
->>>>>>> testing
-
 import { PublicRoute, PrivateRoute } from "./routes";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  // const {loading}
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
@@ -53,7 +46,6 @@ function App() {
             }
           />
 
-<<<<<<< HEAD
           <Route
             path="/trend"
             element={
@@ -62,8 +54,6 @@ function App() {
               </PrivateRoute>
             }
           />
-=======
->>>>>>> testing
           <Route
             path="/login"
             element={

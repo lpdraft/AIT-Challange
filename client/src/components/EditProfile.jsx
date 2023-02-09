@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
-import { SetUser } from "../redux/features/userSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -10,10 +8,8 @@ export const EditProfile = () => {
   const [user, setUser] = useState({
     name: "",
     hobbies: "",
-    file: "",
+    avatar: "",
   });
-
-  const dispatch = useDispatch();
 
   const { userId } = useParams();
 
@@ -30,8 +26,6 @@ export const EditProfile = () => {
 
       if (response.data.success) {
         toast.success("User updated successully!");
-        // dispatch(SetUser(response.data.data));
-        // window.location.reload();
         navigate("/");
       }
     } catch (error) {
@@ -56,21 +50,13 @@ export const EditProfile = () => {
         </div>
 
         <div className="form-group">
-          <div className="d-flex">
-            {/* <input
-              className="form-control"
-              type="file"
-              value={user.pic}
-              onChange={(e) => setUser({ ...user, pic: e.target.value })}
-            /> */}
-            <input
-              className="form-control"
-              type="text"
-              value={user.pic}
-              onChange={(e) => setUser({ ...user, pic: e.target.value })}
-              placeholder="Insert pic URL here..."
-            />
-          </div>
+          <input
+            className="form-control"
+            type="text"
+            value={user.avatar}
+            onChange={(e) => setUser({ ...user, avatar: e.target.value })}
+            placeholder="Insert pic URL here..."
+          />
         </div>
 
         <div className="form-group d-flex justify-content-center">
