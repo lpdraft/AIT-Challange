@@ -26,6 +26,7 @@
 }
 .actionBtns {
   padding: 0.5rem;
+  display: flex;
 }
 .actionBtns button {
   padding: 0.5rem;

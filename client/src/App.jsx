@@ -1,9 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+<<<<<<< HEAD
 import { Home, Register, Login, TrendingGifs } from "./pages";
 import { Toaster } from "react-hot-toast";
+=======
+import { Home, Register, Login, Profile } from "./pages";
+import { EditProfile } from "./components";
+>>>>>>> testing
 
-// import { NavBar } from "./components";
 import { PublicRoute, PrivateRoute } from "./routes";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // const {loading}
@@ -20,6 +25,25 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/edit-profile/:userId"
+            element={
+              <PrivateRoute>
+                <EditProfile />
+              </PrivateRoute>
+            }
+          />
+
           <Route
             path="/register"
             element={
@@ -29,6 +53,7 @@ function App() {
             }
           />
 
+<<<<<<< HEAD
           <Route
             path="/trend"
             element={
@@ -37,6 +62,8 @@ function App() {
               </PrivateRoute>
             }
           />
+=======
+>>>>>>> testing
           <Route
             path="/login"
             element={
