@@ -5,22 +5,13 @@ const bcrypt = require("bcryptjs");
 
 const registerUserControl = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, hobbies } = req.body;
     // Empty fields
     if (!name || !email || !password) {
       res.status(400);
       throw new Error("Please provide all fields");
     }
-    // Hash password
-    const salt = await bcrypt.genSaltSync(10);
-    const hashedPassword = await bcrypt.hashSync(password, salt);
-    req.body.password = hashedPassword;
 
-    const newUser = new User({
-      name,
-      email,
-      password: hashedPassword,
-    });
     // Before registering.. Check if the user exists
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -28,7 +19,20 @@ const registerUserControl = async (req, res) => {
         .status(200)
         .send({ msg: "User already exists!", success: false });
     } else {
+      // Hash password
+      const salt = await bcrypt.genSaltSync(10);
+      const hashedPassword = await bcrypt.hashSync(password, salt);
+      req.body.password = hashedPassword;
+
+      const newUser = new User({
+        name,
+        email,
+        hobbies,
+        password: hashedPassword,
+      });
+
       await newUser.save();
+
       return res.status(200).send({
         msg: "User registered successfully",
         success: true,

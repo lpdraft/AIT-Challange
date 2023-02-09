@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 // const validator = require("validator");
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -22,15 +23,17 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
 
+  avatar: {
+    type: String,
+    required: false,
+    default:
+      "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png",
+  },
+
   isAdmin: {
     type: Boolean,
     required: false,
     default: false,
-  },
-
-  avatar: {
-    type: String,
-    required: false,
   },
 });
 
