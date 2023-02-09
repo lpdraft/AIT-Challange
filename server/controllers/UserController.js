@@ -15,17 +15,11 @@ const registerUserControl = async (req, res) => {
     const salt = await bcrypt.genSaltSync(10);
     const hashedPassword = await bcrypt.hashSync(password, salt);
     req.body.password = hashedPassword;
-    // Cloudinary
-    // const fileUri = getDataUri(file);
-    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
+
     const newUser = new User({
       name,
       email,
       password: hashedPassword,
-      avatar: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      },
     });
     // Before registering.. Check if the user exists
     const userExists = await User.findOne({ email });
