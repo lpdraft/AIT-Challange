@@ -1,7 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Register, Login, TrendingGifs, Profile } from "./pages";
-import { EditProfile } from "./components";
 import { PublicRoute, PrivateRoute } from "./routes";
+
+import {
+  Home,
+  Register,
+  Login,
+  TrendingGifs,
+  Profile,
+  CategoryAnimes,
+  RandomGifs,
+} from "./pages";
+import { EditProfile } from "./components";
+
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -9,6 +19,7 @@ function App() {
     <div>
       <Toaster position="top-center" reverseOrder={false} />
       <BrowserRouter>
+        {/* Home */}
         <Routes>
           <Route
             path="/"
@@ -18,7 +29,7 @@ function App() {
               </PrivateRoute>
             }
           />
-
+          {/* Profile */}
           <Route
             path="/profile"
             element={
@@ -27,12 +38,41 @@ function App() {
               </PrivateRoute>
             }
           />
-
+          {/* EditProfile */}
           <Route
             path="/edit-profile/:userId"
             element={
               <PrivateRoute>
                 <EditProfile />
+              </PrivateRoute>
+            }
+          />
+          {/* Trending */}
+          <Route
+            path="/trend"
+            element={
+              <PrivateRoute>
+                <TrendingGifs />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Random */}
+          <Route
+            path="/random"
+            element={
+              <PrivateRoute>
+                <RandomGifs />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Categories */}
+          <Route
+            path="/categories/animes"
+            element={
+              <PrivateRoute>
+                <CategoryAnimes />
               </PrivateRoute>
             }
           />
@@ -46,14 +86,6 @@ function App() {
             }
           />
 
-          <Route
-            path="/trend"
-            element={
-              <PrivateRoute>
-                <TrendingGifs />
-              </PrivateRoute>
-            }
-          />
           <Route
             path="/login"
             element={

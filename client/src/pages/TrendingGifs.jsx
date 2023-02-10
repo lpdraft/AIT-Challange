@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import { useFetchData } from "../hooks/useFetchData";
+import { useFetchTrending } from "../hooks/useFetchTrending";
+import styles from "./styles.module.scss";
 
 export const TrendingGifs = () => {
-  const { gifs } = useFetchData();
-  console.log(gifs);
+  const { trends } = useFetchTrending();
+
   return (
-    <div className="container">
-      {gifs.map((trend) => {
+    <div className={styles.containerPages}>
+      {trends?.map((trend) => {
         return (
           <div key={trend.id} className="card">
-            <h1>{trend.title}</h1>
-            <img src={trend.url} alt="" />
+            <div className={styles.categoryCard}>
+              <h3>{trend.title}</h3>
+              <img src={trend.url} alt={trend.title} />
+            </div>
           </div>
         );
       })}

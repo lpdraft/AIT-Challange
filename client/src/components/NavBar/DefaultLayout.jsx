@@ -1,27 +1,39 @@
-import logo from "../../assets/imgs/peace.png";
-import navBarCss from "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+import logo from "../../assets/imgs/peace.png";
+import styles from "./styles.module.scss";
+
 export const DefaultLayout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="navContainer">
+      <div className={styles.navContainer}>
         {/* Logo */}
         <div>
           <img
             src={logo}
             alt="logo"
-            className="navLogo"
+            className={styles.navLogo}
             onClick={() => navigate("/")}
           />
-
           <span className="text-success">{user?.name.toUpperCase()}</span>
         </div>
-        {/* Nav Links */}
-        <div className="navLinks">
+
+        {/* Nav Links / Dropdown Categories*/}
+        <div className={styles.navLinks}>
+          <li>
+            <a
+              onClick={() => {
+                navigate("/random");
+              }}
+            >
+              Random
+            </a>
+          </li>
+
           <li>
             <a
               onClick={() => {
@@ -31,15 +43,60 @@ export const DefaultLayout = ({ children }) => {
               Trending
             </a>
           </li>
-          <li>
-            <a>Sports</a>
-          </li>
-          <li>
-            <a>Artists</a>
-          </li>
+
+          <div className="dropdown">
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Categories GIfs
+            </button>
+
+            <ul className="dropdown-menu">
+              <li>
+                <button
+                  className="dropdown-item"
+                  type="button"
+                  onClick={() => {
+                    navigate("/categories/animes");
+                  }}
+                >
+                  Animes
+                </button>
+              </li>
+              <li>
+                <button className="dropdown-item" type="button">
+                  Animals
+                </button>
+              </li>
+              <li>
+                <button className="dropdown-item" type="button">
+                  Celebrities
+                </button>
+              </li>
+              <li>
+                <button className="dropdown-item" type="button">
+                  Emotions
+                </button>
+              </li>
+              <li>
+                <button className="dropdown-item" type="button">
+                  Memes
+                </button>
+              </li>
+              <li>
+                <button className="dropdown-item" type="button">
+                  Movies
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
+
         {/* Upload & LoIn/Out */}
-        <div className="actionBtns">
+        <div className={styles.actionBtns}>
           <button className="btn btn-sm btn-success">
             <i>Upload</i>
           </button>
@@ -54,6 +111,7 @@ export const DefaultLayout = ({ children }) => {
             >
               Profile
             </button>
+
             <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
               <li>
                 <button
@@ -87,9 +145,8 @@ export const DefaultLayout = ({ children }) => {
               </li>
             </ul>
           </div>
-
-          {/* ----------------- */}
         </div>
+        {/* Container Wrapper */}
       </div>
       <div className="container">{children}</div>
     </>

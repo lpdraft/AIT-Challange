@@ -12,6 +12,7 @@ export const Register = () => {
     hobbies: "",
     password: "",
   });
+
   // const fileTypes = ["JPG", "PNG", "GIF"];
 
   const navigate = useNavigate();
@@ -20,12 +21,6 @@ export const Register = () => {
     e.preventDefault();
 
     try {
-      // const formData = new FormData();
-      // todo lo que tengamos en el formulario
-      // Object.keys(user).forEach((key) => {
-      //   formData.append(key, user[key]);
-      // });
-
       const response = await axios.post(
         "http://localhost:5000/api/users/register",
         user
