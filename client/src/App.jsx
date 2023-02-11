@@ -9,10 +9,12 @@ import {
   Profile,
   CategoryAnimes,
   RandomGifs,
+  UploadGifs,
 } from "./pages";
 import { EditProfile } from "./components";
 
 import { Toaster } from "react-hot-toast";
+import { Form } from "./pages/Form";
 
 function App() {
   return (
@@ -29,6 +31,26 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          {/* Prueba */}
+          <Route
+            path="/form"
+            element={
+              <PrivateRoute>
+                <Form />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/upload/:idUser"
+            element={
+              <PrivateRoute>
+                <UploadGifs />
+              </PrivateRoute>
+            }
+          />
+
           {/* Profile */}
           <Route
             path="/profile"

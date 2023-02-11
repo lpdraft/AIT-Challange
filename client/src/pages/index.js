@@ -5,4 +5,6 @@ export * from "./Profile";
 export * from "./DashboardGifs";
 export * from "./TrendingGifs";
 export * from "./RandomGifs";
+export * from "./Form";
+export * from "./UploadGifs";
 export * from "./categories/CategoryAnimes";

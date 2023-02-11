@@ -44,6 +44,16 @@ export const DefaultLayout = ({ children }) => {
             </a>
           </li>
 
+          <li>
+            <a
+              onClick={() => {
+                navigate("/form");
+              }}
+            >
+              useForm
+            </a>
+          </li>
+
           <div className="dropdown">
             <button
               className="btn btn-secondary dropdown-toggle"
@@ -97,7 +107,10 @@ export const DefaultLayout = ({ children }) => {
 
         {/* Upload & LoIn/Out */}
         <div className={styles.actionBtns}>
-          <button className="btn btn-sm btn-success">
+          <button
+            className="btn btn-sm btn-success"
+            onClick={() => navigate(`/upload/${user._id}`)}
+          >
             <i>Upload</i>
           </button>
 
