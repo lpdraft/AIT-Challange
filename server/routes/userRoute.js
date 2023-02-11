@@ -20,7 +20,7 @@ router.post("/login", loginUserControl);
 // PrivateRoutes
 router.post("/user-data", authMiddleware, userVerificationControl);
 
-router.patch("/edit-profile/:id", updateUserControl);
+router.patch("/edit-profile/:id", singleUpload, updateUserControl);
 router.get("/user-info/:id", getSingleUserControl);
 router.get("/all-users", getAllUsers);
 
