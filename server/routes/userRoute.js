@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middlewares/authMiddleware");
-const { singleUpload } = require("../middlewares/multerMiddleware");
 
 const {
   registerUserControl,
@@ -9,7 +8,6 @@ const {
   userVerificationControl,
   updateUserControl,
   getSingleUserControl,
-  // updateProfilePic,
   getAllUsers,
 } = require("../controllers/UserController");
 
@@ -20,7 +18,7 @@ router.post("/login", loginUserControl);
 // PrivateRoutes
 router.post("/user-data", authMiddleware, userVerificationControl);
 
-router.patch("/edit-profile/:id", singleUpload, updateUserControl);
+router.patch("/edit-profile/:id", updateUserControl);
 router.get("/user-info/:id", getSingleUserControl);
 router.get("/all-users", getAllUsers);
 
