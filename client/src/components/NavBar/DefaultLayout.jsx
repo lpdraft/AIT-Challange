@@ -44,7 +44,7 @@ export const DefaultLayout = ({ children }) => {
             </a>
           </li>
 
-          <li>
+          {/* <li>
             <a
               onClick={() => {
                 navigate("/form");
@@ -52,7 +52,7 @@ export const DefaultLayout = ({ children }) => {
             >
               useForm
             </a>
-          </li>
+          </li> */}
 
           <div className="dropdown">
             <button
@@ -77,28 +77,25 @@ export const DefaultLayout = ({ children }) => {
                 </button>
               </li>
               <li>
-                <button className="dropdown-item" type="button">
+                <button
+                  onClick={() => {
+                    navigate("/categories/animals");
+                  }}
+                  className="dropdown-item"
+                  type="button"
+                >
                   Animals
                 </button>
               </li>
               <li>
-                <button className="dropdown-item" type="button">
+                <button
+                  onClick={() => {
+                    navigate("/categories/celebrities");
+                  }}
+                  className="dropdown-item"
+                  type="button"
+                >
                   Celebrities
-                </button>
-              </li>
-              <li>
-                <button className="dropdown-item" type="button">
-                  Emotions
-                </button>
-              </li>
-              <li>
-                <button className="dropdown-item" type="button">
-                  Memes
-                </button>
-              </li>
-              <li>
-                <button className="dropdown-item" type="button">
-                  Movies
                 </button>
               </li>
             </ul>
@@ -142,6 +139,15 @@ export const DefaultLayout = ({ children }) => {
                   type="button"
                 >
                   Edit
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => navigate("/list")}
+                  className="dropdown-item"
+                  type="button"
+                >
+                  My Gifs
                 </button>
               </li>
               <li>

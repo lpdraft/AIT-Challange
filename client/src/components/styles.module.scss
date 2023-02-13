@@ -1,0 +1,30 @@
+.containerPages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .categoryCard {
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      object-fit: cover;
+      height: 35rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 0.8rem 0;
+      text-transform: uppercase;
+    }
+    span {
+      font-size: 2rem;
+      font-style: italic;
+    }
+  }
+}

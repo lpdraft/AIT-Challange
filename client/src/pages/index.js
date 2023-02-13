@@ -8,3 +8,4 @@ export * from "./RandomGifs";
 export * from "./Form";
 export * from "./UploadGifs";
 export * from "./categories/CategoryAnimes";
+export * from "./categories/CategoryAnimals";

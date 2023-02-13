@@ -99,7 +99,7 @@ export const Form = () => {
         <div className="uploadField">
           <label>Upload from your computer</label>
 
-          <input type="file" {...register("File")} />
+          <input type="file" {...register("image")} />
         </div>
 
         <input type="submit" value="Enviar" />

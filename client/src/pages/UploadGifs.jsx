@@ -1,19 +1,40 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 export const UploadGifs = () => {
-  const [formData, setFormData] = useState([]);
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch,
-  } = useForm({});
+  const navigate = useNavigate();
+  // const [formData, setFormData] = useState();
+  const { register, handleSubmit, watch } = useForm();
 
-  const onSubmit = (data) => {
-    setFormData(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    // title
+    // gifType
+    // imgUrl
+    // image
+    try {
+      const formData = new FormData();
+
+      formData.append("title", data.title);
+      formData.append("imgUrl", data.imgUrl);
+      formData.append("gifType", data.gifType);
+      formData.append("image", data.image[0]);
+
+      const response = await axios.post(
+        "http://localhost:5000/api/memes/add",
+        formData
+      );
+      // console.log(response);
+      if (response.statusText === "OK") {
+        toast.success("Successfully added");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  console.log(formData);
 
   return (
     <div className="containerPages">
@@ -25,11 +46,6 @@ export const UploadGifs = () => {
         </div>
 
         <div className="inputWrapper">
-          <label>Description</label>
-          <input className="form-control" type="text" {...register("desc")} />
-        </div>
-
-        <div className="inputWrapper">
           <label>Type</label>
           <select {...register("gifType")}>
             <option value="gif">Gif</option>
@@ -38,20 +54,20 @@ export const UploadGifs = () => {
         </div>
 
         <div className="inputWrapper">
-          <label>Paste Url or Upload from PC</label>
+          <label>Paste Url or Upload gifs</label>
 
           <div className="fileOptions">
-            <input type="file" {...register("File")} />
+            <input type="file" {...register("image")} />
 
             <input
               placeholder="Paste URL Here..."
               type="text"
-              {...register("URL")}
+              {...register("imgUrl")}
             />
           </div>
         </div>
 
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Add" />
       </form>
     </div>
   );

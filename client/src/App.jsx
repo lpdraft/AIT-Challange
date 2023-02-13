@@ -10,11 +10,13 @@ import {
   CategoryAnimes,
   RandomGifs,
   UploadGifs,
+  CategoryAnimals,
 } from "./pages";
-import { EditProfile } from "./components";
+import { EditProfile, GifInfo, UserGifs } from "./components";
 
 import { Toaster } from "react-hot-toast";
 import { Form } from "./pages/Form";
+import { CategoryCelebrities } from "./pages/categories/CategoryCelebrities";
 
 function App() {
   return (
@@ -43,10 +45,26 @@ function App() {
           />
 
           <Route
-            path="/upload/:idUser"
+            path="/upload/:userId"
             element={
               <PrivateRoute>
                 <UploadGifs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/list"
+            element={
+              <PrivateRoute>
+                <UserGifs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/gif-info/:id"
+            element={
+              <PrivateRoute>
+                <GifInfo />
               </PrivateRoute>
             }
           />
@@ -95,6 +113,22 @@ function App() {
             element={
               <PrivateRoute>
                 <CategoryAnimes />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/categories/animals"
+            element={
+              <PrivateRoute>
+                <CategoryAnimals />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/categories/celebrities"
+            element={
+              <PrivateRoute>
+                <CategoryCelebrities />
               </PrivateRoute>
             }
           />
