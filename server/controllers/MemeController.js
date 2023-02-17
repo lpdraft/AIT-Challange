@@ -39,6 +39,7 @@ const addGifs = async (req, res) => {
 
 const updateGif = async (req, res) => {
   try {
+    // const { id } = req.parmas;
     let gif = await memeModel.findById(req.params.id).exec();
     await cloudinary.uploader.destroy(gif.cloudinary_id);
 
